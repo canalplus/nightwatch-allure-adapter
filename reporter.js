@@ -14,7 +14,7 @@ var runtimeAllure = new Runtime(allureReporter);
 var find = require("find");
 
 var self = module.exports = {
-    write: function (results, done, directoryPath) {
+    write: function (results, done, directoryPath, reportPath) {
         allureReporter.setOptions(" -o reports/allure-report" || {});
         for (var currentModule in results.modules) {
             module = results.modules[currentModule];
@@ -35,6 +35,9 @@ var self = module.exports = {
             }
 
             if (typeof directoryPath !== 'undefined') {
+                if (typeof reportPath !== 'undefined') {
+                    allureReporter.setOptions({targetDir: path.join(directoryPath, reportPath)});
+                }
                 currentTest.tags = self.parseFileForTags(directoryPath + "/tests/" + currentModule + ".js");
             }
 
