@@ -70,6 +70,18 @@ var self = module.exports = {
             if (currentTest.tags.hasOwnProperty("issue")) {
                 runtimeAllure.addLabel("issue", currentTest.tags["issue"])
             }
+            if (currentTest.tags.hasOwnProperty("severity")) {
+                runtimeAllure.addLabel("severity", currentTest.tags["severity"])
+            }
+            if (currentTest.tags.hasOwnProperty("feature")) {
+                runtimeAllure.addLabel("feature", currentTest.tags["feature"])
+            }
+            if (currentTest.tags.hasOwnProperty("story")) {
+                runtimeAllure.addLabel("story", currentTest.tags["story"])
+            }
+            if (currentTest.tags.hasOwnProperty("owner")) {
+                runtimeAllure.addLabel("owner", currentTest.tags["owner"])
+            }
             if (currentTest.tags.hasOwnProperty("description")) {
                 runtimeAllure.description(currentTest.tags.description);
             }
@@ -183,6 +195,18 @@ var self = module.exports = {
                         break;
                     case "issue":
                         tcTags.issue = currentTag.description;
+                        break;
+                    case "severity":
+                        tcTags.severity = currentTag.description;
+                        break;
+                    case "feature":
+                        tcTags.feature = currentTag.description;
+                        break;
+                    case "story":
+                        tcTags.story = currentTag.description;
+                        break;
+                    case "owner":
+                        tcTags.owner = currentTag.description;
                         break;
                     case "type":
                         tcTags.type = currentTag.description;
