@@ -67,6 +67,9 @@ var self = module.exports = {
             if (currentTest.tags.hasOwnProperty("testcaseId")) {
                 runtimeAllure.addLabel("testId", currentTest.tags["testcaseId"])
             }
+            if (currentTest.tags.hasOwnProperty("issue")) {
+                runtimeAllure.addLabel("issue", currentTest.tags["issue"])
+            }
             if (currentTest.tags.hasOwnProperty("description")) {
                 runtimeAllure.description(currentTest.tags.description);
             }
@@ -177,6 +180,9 @@ var self = module.exports = {
                 switch (currentTag.tag) {
                     case "testcaseid":
                         tcTags.testcaseId = currentTag.description;
+                        break;
+                    case "issue":
+                        tcTags.issue = currentTag.description;
                         break;
                     case "type":
                         tcTags.type = currentTag.description;
